@@ -1,0 +1,58 @@
+.titulo {
+    color: black;
+    padding-bottom: 30px;;
+}
+
+.titulo, .formulario{
+    margin-left: 70px;
+}
+
+#formContent .nuevoUsuario {
+    max-width: 1200px  !important;
+    width: 60% !important;
+    margin: 0px !important;
+}
+
+
+.editarUsuario{
+    max-width: 1200px  !important;
+    width: 70% !important;
+    margin: 0px !important;
+}
+
+.boton {
+    margin-left: 320px;
+}
+
+.loginContenedor {
+    max-width: 1200px  !important;
+    width: 60% !important;
+    margin: 0px !important;
+}
+
+.labelForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.listaOpciones{
+    padding-left: 59px;
+    padding-right: 57px;
+}
+
+.boton {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+}
+
+.boton:hover {
+    background-color: #52DAFB;
+}
+
+body
+{
+    min-height: 750px !important;
+    height: auto !important;
+}
