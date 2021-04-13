@@ -7,7 +7,11 @@ export const Routes = {
     DashboardOverview: { path: "/dashboard/overview" },
     EditUser : {path:"/editar/usuario"},
     ReadUser : {path:"/datos/usuario"},
-    CreateEstation: {path: "crear/Estacion"},
+    CreateStation: {path: "/crear/Estacion"},
+    SearchStation: {path: "/buscar/Estacion"},
+    ReadStation: {path: "/datos/Estacion"},
+    EditStation: {path: "/editar/Estacion"},
+
     Transactions: { path: "/transactions" },
     Settings: { path: "/settings" },
     Upgrade: { path: "/upgrade" },

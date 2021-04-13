@@ -1,6 +1,6 @@
 import React from 'react'
 
-import FormUser from '../components/UserCreate/index'
+import FormUser from '../../components/UserCreate/index'
 import {Helmet} from 'react-helmet';
 
 import './createUser/userCreate.css'

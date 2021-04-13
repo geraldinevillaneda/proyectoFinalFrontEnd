@@ -156,9 +156,9 @@ export default function UserCreate (){
         const data = {
             id:userid,
             nombre_usuario:username,
-            tipo_documento:userdocument,
-            sexo_usuario:usersex,
-            nacionalidad_usuario:usersource,
+            tipo_documento:document.getElementById("tipoD").value,
+            sexo_usuario:document.getElementById("sexo").value,
+            nacionalidad_usuario:document.getElementById("nacionalidad").value,
             telefono_usuario:userphone,
             direccion_usuario:useraddres,
             clave_usuario:userpassword
@@ -206,7 +206,7 @@ export default function UserCreate (){
                 <h2 className='titulo'>Formulario de ingreso de usuarios</h2>
                 :<h2 className='titulo'>Editar Usuario</h2>
             }
-            <form className="row g-3 formulario" autoComplete="off" noValidate>
+            <form className="row g-3 formulario" autoComplete="off" >
 
                 <label className="form-label col-sm-4 labelForm">Numero de documento</label>
                 <div className="col-md-8 listaOpciones">

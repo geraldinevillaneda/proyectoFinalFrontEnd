@@ -1,8 +1,8 @@
 import React from 'react'
 import {Helmet} from 'react-helmet';
 
-import CreateUser from '../../components/UserCreate/index'
-import Header from '../../components/Header/index'
+import CreateUser from '../../../components/UserCreate/index'
+import Header from '../../../components/Header/index'
 
 import './userCreate.css'
 
