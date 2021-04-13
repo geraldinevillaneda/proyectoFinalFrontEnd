@@ -46,16 +46,11 @@ export default function CreateGasolinera (){
         
         crear = false;
 
-        values.id = datosGasolineria.datos.id
-        values.nombre_estacion = datosGasolineria.datos.nombre_estacion;
-        values.direccion_estacion = datosGasolineria.datos.direccion_estacion;
-        values.telefono_estacion = datosGasolineria.datos.telefono_estacion;
-        values.latitud_estacion = datosGasolineria.datos.latitud_estacion;
-        values.longitud_estacion = datosGasolineria.datos.longitud_estacion;
+
         const valores =  JSON.parse(sessionStorage.getItem('login'));
         const token = valores.datos.token;
 
-        fetch('http://localhost:5000/gasolineras/' + values.id.toString(), {
+        fetch('http://localhost:5000/gasolineras/' + datosGasolineria.datos.id, {
             method: 'GET',
             headers:{
                 'Content-Type': 'application/json',
@@ -65,8 +60,8 @@ export default function CreateGasolinera (){
             respuesta.json().then((result) => {
                 if(result.Auth)
                 {           
-                    console.log(result.datos); 
-                    values.id = id
+                    console.log(result); 
+                    values.id = result.datos.id;
                     values.nombre_estacion = result.datos.nombre_estacion;
                     values.direccion_estacion = result.datos.direccion_estacion;
                     values.telefono_estacion = result.datos.telefono_estacion;
@@ -119,6 +114,10 @@ export default function CreateGasolinera (){
                 if(result.Auth)
                 {
                     alert(result.done);
+                    sessionStorage.removeItem('estacion');
+                    sessionStorage.setItem('estacion', JSON.stringify({
+                        datos: data
+                    }));
                     navigator.push('/datos/Estacion');
                 }
                 else
@@ -218,6 +217,7 @@ export default function CreateGasolinera (){
                                 type="text" className="form-control" id="nombre" placeholder="Nombre Estacion" required/>
                             :<input onChange={(e) => setValues(
                                 {
+                                    id:values.id,
                                     nombre_estacion:e.target.value,
                                 }
                             )} value={values.nombre_estacion} type="text" className="form-control" id="nombre" placeholder="Nombre estacion" required />
@@ -232,6 +232,7 @@ export default function CreateGasolinera (){
                                 type="text" className="form-control" id="direccion" placeholder="direccion Estacion" required/>
                             :<input onChange={(e) => setValues(
                                 {
+                                    id:values.id,
                                     direccion_estacion:e.target.value,
                                 }
                             )} value={values.direccion_estacion} type="text" className="form-control" id="direccion" placeholder="direccion estacion" required />
@@ -246,6 +247,7 @@ export default function CreateGasolinera (){
                                 type="number" className="form-control" id="telefono" placeholder="telefono Estacion" required/>
                             :<input onChange={(e) => setValues(
                                 {
+                                    id:values.id,
                                     telefono_estacion:e.target.value,
                                 }
                             )} value={values.telefono_estacion} type="number" className="form-control" id="telefono" placeholder="telefono estacion" required />
@@ -260,6 +262,7 @@ export default function CreateGasolinera (){
                                 type="number" className="form-control" id="lactitud"  placeholder="Lactitud" required/>
                             : <input onChange={(e) => setValues(
                                 {
+                                    id:values.id,
                                     latitud_estacion:e.target.value,
                                 }
                             )} value={values.latitud_estacion} type="number" className="form-control" id="lactitud"  placeholder="Lactitud" required/>
@@ -274,6 +277,7 @@ export default function CreateGasolinera (){
                                 type="number" className="form-control" id="longitud"  placeholder="longitud" required/>
                             : <input onChange={(e) => setValues(
                                 {
+                                    id:values.id,
                                     longitud_estacion:e.target.value,
                                 }
                             )} value={values.longitud_estacion} type="number" className="form-control" id="longitud"  placeholder="longitud" required/>
