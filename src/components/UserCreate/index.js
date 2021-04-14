@@ -6,14 +6,19 @@ import '../../pages/Login/login'
 
 const initialFieldValues = 
 {
-    id: '',
-    nombre_usuario: '',
-    tipo_documento: '',
-    sexo_usuario: '',
-    nacionalidad_usuario: '',
-    telefono_usuario: '',
-    direccion_usuario: '',
-    clave_usuario: ''
+    ID_USUARIO: '',
+    PRIMER_NOMBRE: '',
+    SEGUNDO_NOMBRE: '',
+    PRIMER_APELLIDO: '',
+    SEGUNDO_APELLIDO: '',
+    SEXO: '',
+    TIPO_DOCUMENTO: '',
+    NUMERO_DOCUMENTO: '',
+    CORREO_ELECTRONICO: '',
+    CELUAR: '',
+    ROL: '',
+    PASSWORD: '',
+    PASSWORD2: '' 
 }
 
 
@@ -23,16 +28,19 @@ export default function UserCreate (){
 
     const [values, setValues] = useState(initialFieldValues);
 
-    const [userid, setUserId] = useState('');
-    const [username, setUsername] = useState('');
-    const [userdocument, setUserDocument] = useState('');
-    const [usersex, setUserSex] = useState('');
-    const [userphone, setUserPhone] = useState('');
-    const [useraddres, setUserAddres] = useState('');
-    const [usersource, setUserSource] = useState('');
-    const [userpassword, setUserPassword] = useState('');
-    const [userpassword2, setUserPassword2] = useState('');
-
+    const [ID_USUARIO, SetID_USUARIO] = useState('');
+    const [PRIMER_NOMBRE, SetPRIMER_NOMBRE] = useState('');
+    const [SEGUNDO_NOMBRE, SetSEGUNDO_NOMBRE] = useState('');
+    const [PRIMER_APELLIDO, SetPRIMER_APELLIDO] = useState('');
+    const [SEGUNDO_APELLIDO, SetSEGUNDO_APELLIDO] = useState('');
+    const [SEXO, SetSEXO] = useState('');
+    const [TIPO_DOCUMENTO, SetTIPO_DOCUMENTO] = useState('');
+    const [NUMERO_DOCUMENTO, SetNUMERO_DOCUMENTO] = useState('');
+    const [CORREO_ELECTRONICO, SetCORREO_ELECTRONICO] = useState('');
+    const [CELUAR, SetCELUAR] = useState('');
+    const [ROL, SetROL] = useState('');
+    const [PASSWORD, SetPASSWORD] = useState('');
+    const [PASSWORD2, SetPASSWORD2] = useState('');
     
     const   url = window.location.href;
     const navigator = useHistory();
@@ -61,15 +69,17 @@ export default function UserCreate (){
                 if(result.Auth)
                 {           
                     console.log(result.datos); 
-                    values.id = result.datos.id;
-                    values.nombre_usuario = result.datos.nombre_usuario;
-                    values.tipo_documento = result.datos.tipo_documento;
-                    values.sexo_usuario = result.datos.sexo_usuario;
-                    values.nacionalidad_usuario = result.datos.nacionalidad_usuario;
-                    values.telefono_usuario = result.datos.telefono_usuario;
-                    values.direccion_usuario = result.datos.direccion_usuario;
-                    values.clave_usuario = result.datos.clave_usuario;
-
+                    values.ID_USUARIO = result.datos.id_usuario;
+                    values.PRIMER_NOMBRE = result.datos.primer_nombre;
+                    values.SEGUNDO_NOMBRE = result.datos.segundo_nombre;
+                    values.PRIMER_APELLIDO = result.datos.primer_apellido;
+                    values.SEGUNDO_APELLIDO = result.datos.segundo_apellido;
+                    values.SEXO = result.datos.sexo;
+                    values.TIPO_DOCUMENTO = result.datos.tipo_documento;
+                    values.NUMERO_DOCUMENTO = result.datos.numero_documento;
+                    values.CORREO_ELECTRONICO = result.datos.correo_electronico;
+                    values.CELUAR = result.datos.celular;
+                    values.ROL = result.datos.rol;
                 }
                 else
                 {
@@ -92,59 +102,50 @@ export default function UserCreate (){
         e.preventDefault();
         
         const data = {
-            id:document.getElementById("documento").value,
-            nombre_usuario: document.getElementById("nombre").value,
-            tipo_documento:document.getElementById("tipoD").value,
-            sexo_usuario:document.getElementById("sexo").value,
-            nacionalidad_usuario:document.getElementById("nacionalidad").value,
-            telefono_usuario:document.getElementById("telefono").value,
-            direccion_usuario:document.getElementById("direccion").value,
+            PRIMER_NOMBRE: document.getElementById('primer_nombre').value,
+            SEGUNDO_NOMBRE: document.getElementById('segundo_nombre').value,
+            PRIMER_APELLIDO: document.getElementById('primer_apellido').value,
+            SEGUNDO_APELLIDO: document.getElementById('segundo_apellido').value,
+            SEXO: document.getElementById('sexo').value,
+            TIPO_DOCUMENTO: document.getElementById('tipo_documento').value,
+            CORREO_ELECTRONICO: document.getElementById('correo_electronico').value,
+            CELUAR: document.getElementById('celular').value,
         };
         console.log(data);
         const valores = JSON.parse(sessionStorage.getItem('login'));
         const id = valores.datos.id;
         const token = valores.datos.token;
 
-        if(userpassword !== userpassword2)
-        {
-            alert("Las contraseñas no coinciden")
-        }
-        else 
-        {
-            fetch(('http://localhost:5000/users/update/' + id) ,{
-                method:'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-access-token': token
+        fetch(('http://localhost:5000/users/update/' + id) ,{
+            method:'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': token
+            }
+        }).then((respuesta) => {
+            respuesta.json().then((result) => {
+                console.log(result)
+                
+                if(result.Auth)
+                {
+                    alert(result.done);
+                    navigator.push("/datos/usuario")
                 }
-            }).then((respuesta) => {
-                respuesta.json().then((result) => {
-                    console.log(result)
-                    
-                    if(result.Auth)
+                else
+                {
+                    if(!result.token)
                     {
-                        alert(result.done);
-                        navigator.push("/datos/usuario")
+                        navigator.push('/login');
+                        alert("El tiempo de sesion expiro");
                     }
                     else
                     {
-                        if(!result.token)
-                        {
-                            navigator.push('/login');
-                            alert("El tiempo de sesion expiro");
-                        }
-                        else
-                        {
-                            alert(result.done);
-                        }
+                        alert(result.done);
                     }
-                })
+                }
             })
-        }
-        
-        console.log(userid);
-
+        })
     }
 
     
@@ -154,16 +155,25 @@ export default function UserCreate (){
         
         
         const data = {
-            id:userid,
-            nombre_usuario:username,
-            tipo_documento:document.getElementById("tipoD").value,
-            sexo_usuario:document.getElementById("sexo").value,
-            nacionalidad_usuario:document.getElementById("nacionalidad").value,
-            telefono_usuario:userphone,
-            direccion_usuario:useraddres,
-            clave_usuario:userpassword
+
+            /* ID_USUARIO: document.getElementById('numero_documento').value, */
+            PRIMER_NOMBRE: document.getElementById('primer_nombre').value,
+            SEGUNDO_NOMBRE: document.getElementById('segundo_nombre').value,
+            PRIMER_APELLIDO: document.getElementById('primer_apellido').value,
+            SEGUNDO_APELLIDO: document.getElementById('segundo_apellido').value,
+            SEXO: document.getElementById('sexo').value,
+            TIPO_DOCUMENTO: document.getElementById('tipo_documento').value,
+            NUMERO_DOCUMENTO: document.getElementById('numero_documento').value,
+            CORREO_ELECTRONICO: document.getElementById('correo_electronico').value,
+            CELUAR: document.getElementById('celular').value,
+            ROL: document.getElementById('rol').value,
+            PASSWORD: document.getElementById('password').value,
+            PASSWORD2: document.getElementById('password2').value,
+            t003_roles_id_rol: 1
+
         };
-        if(userpassword !== userpassword2)
+
+        if(data.PASSWORD !== data.PASSWORD2)
         {
             alert("Las contraseñas no coinciden")
         }
@@ -180,12 +190,12 @@ export default function UserCreate (){
                     if(result.Auth)
                     {
                         alert(result.done);
+                        console.log(result)
                         sessionStorage.setItem('login', JSON.stringify({
                             datos: {
                                 token: result.succesfull,
                                 nombreUsuario: result.nombre_usuario,
                                 id: result.id,
-                                /* password: userpassword */
                             }
                         }));
                         navigator.push('/dashboard/overview');
@@ -211,164 +221,175 @@ export default function UserCreate (){
                 <label className="form-label col-sm-4 labelForm">Numero de documento</label>
                 <div className="col-md-8 listaOpciones">
                     {crear ?
-                        <input onChange={(e) => setUserId(e.target.value)} value={userid} 
-                            type="number" className="form-control" id="documento" placeholder="Nro de documento" required/>
-                        : <label type="number" className="form-control" id="documento" placeholder="Nro de documento">{values.id}</label>
+                        <input onChange={(e) => SetNUMERO_DOCUMENTO(e.target.value)} value={NUMERO_DOCUMENTO} 
+                            type="number" className="form-control" id="numero_documento" placeholder="Nro de documento" required/>
+                        : <label type="number" className="form-control" id="numero_documento" placeholder="Nro de documento">{values.NUMERO_DOCUMENTO}</label>
                     }
                 </div>
 
-                
-                <label className="form-label col-sm-4 labelForm">Nombres</label>
+
+                <label className="form-label col-sm-4 labelForm">Primer Nombres</label>
                 <div className="col-md-8">
                     {crear ?
-                        <input onChange={(e) => setUsername(e.target.value)} value={username}  
-                            type="text" className="form-control" id="nombre" placeholder="Nombre completo" required/>
+                        <input onChange={(e) => SetPRIMER_NOMBRE(e.target.value)} value={PRIMER_NOMBRE}  
+                            type="text" className="form-control" id="primer_nombre" placeholder="Primer nombre" required/>
                         :<input onChange={(e) => setValues(
                             {
-                                id:values.id,
-                                nombre_usuario:e.target.value,
-                                /*tipo_documento:values.tipo_documento,
-                                sexo_usuario:values.sexo_usuario,
-                                nacionalidad_usuario:values.nacionalidad_usuario,
-                                telefono_usuario:values.telefono_usuario,
-                                direccion_usuario:values.direccion_usuario,*/
+                                NUMERO_DOCUMENTO: values.NUMERO_DOCUMENTO,
+                                PRIMER_NOMBRE:e.target.value,
                             }
-                        )} value={values.nombre_usuario} type="text" className="form-control" id="nombre" placeholder="Nombre completo" required />
+                        )} value={values.PRIMER_NOMBRE} type="text" className="form-control" id="primer_nombre" placeholder="Primer nombre" required />
                     } 
                 </div>
 
-                
-                <label className="form-label col-sm-4 labelForm">Tipo de documento</label>
-                <div className="col-md-8 listaOpciones">
+                <label className="form-label col-sm-4 labelForm">Seundo Nombres</label>
+                <div className="col-md-8">
                     {crear ?
-                        <select onChange={(e) => setUserDocument(e.target.value)} value={userdocument} 
-                                className="form-select" id="tipoD" >
-                            <option value='CC'>Cedula de Ciudadania</option>
-                            <option value='TI'>Tarjeta de Identidad</option>
-                        </select>
-                        :<select onChange={(e) => setValues(
+                        <input onChange={(e) => SetSEGUNDO_NOMBRE(e.target.value)} value={SEGUNDO_NOMBRE}  
+                            type="text" className="form-control" id="segundo_nombre" placeholder="Segundo nombre" required/>
+                        :<input onChange={(e) => setValues(
                             {
-                                id:values.id,
-                                //nombre_usuario:values.nombre_usuario,
-                                tipo_documento:e.target.value,
-                                /*sexo_usuario:values.sexo_usuario,
-                                nacionalidad_usuario:values.nacionalidad_usuario,
-                                telefono_usuario:values.telefono_usuario,
-                                direccion_usuario:values.direccion_usuario,*/
+                                NUMERO_DOCUMENTO: values.NUMERO_DOCUMENTO,
+                                SEGUNDO_NOMBRE: e.target.value,
                             }
-                        )} value={values.tipo_documento} className="form-select" id="tipoD" >
-                            <option value="CC">Cedula de Ciudadania</option>
-                            <option value="TI">Tarjeta de Identidad</option>
-                        </select>
-                    }
+                        )} value={values.SEGUNDO_NOMBRE} type="text" className="form-control" id="segundo_nombre" placeholder="Segundo nombre" required />
+                    } 
                 </div>
 
-                
+                <label className="form-label col-sm-4 labelForm">Primer Apellido</label>
+                <div className="col-md-8">
+                    {crear ?
+                        <input onChange={(e) => SetPRIMER_APELLIDO(e.target.value)} value={PRIMER_APELLIDO}  
+                            type="text" className="form-control" id="primer_apellido" placeholder="Primer apellido" required/>
+                        :<input onChange={(e) => setValues(
+                            {
+                                NUMERO_DOCUMENTO: values.NUMERO_DOCUMENTO,
+                                PRIMER_APELLIDO: e.target.value,
+                            }
+                        )} value={values.PRIMER_APELLIDO} type="text" className="form-control" id="primer_apellido" placeholder="Primer apellido" required />
+                    } 
+                </div>
+
+                <label className="form-label col-sm-4 labelForm">Segundo Apellido</label>
+                <div className="col-md-8">
+                    {crear ?
+                        <input onChange={(e) => SetSEGUNDO_APELLIDO(e.target.value)} value={SEGUNDO_APELLIDO}  
+                            type="text" className="form-control" id="segundo_apellido" placeholder="Segundo apellido" required/>
+                        :<input onChange={(e) => setValues(
+                            {
+                                NUMERO_DOCUMENTO: values.NUMERO_DOCUMENTO,
+                                SEGUNDO_APELLIDO: e.target.value,
+                            }
+                        )} value={values.SEGUNDO_APELLIDO} type="text" className="form-control" id="segundo_apellido" placeholder="Segundo apellido" required />
+                    } 
+                </div>
+
+
                 <label className="form-label col-sm-4 labelForm">Sexo</label>
                 <div className="col-md-8 listaOpciones">
                     {crear ?
-                        <select onChange={(e) => setUserSex(e.target.value)} value={usersex} 
+                        <select onChange={(e) => SetSEXO(e.target.value)} value={SEXO} 
                                 className="form-select" id="sexo" >
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                            <option value="O">Otro</option>
+                            <option value="0">Masculino</option>
+                            <option value="1">Femenino</option>
+                            <option value="2">Otro</option>
                         </select>
                         :<select onChange={(e) => setValues(
                             {
-                                id:values.id,
-                                /*nombre_usuario:values.nombre_usuario,
-                                tipo_documento:values.tipo_documento,*/
-                                sexo_usuario:e.target.value,
-                                /*nacionalidad_usuario:values.nacionalidad_usuario,
-                                telefono_usuario:values.telefono_usuario,
-                                direccion_usuario:values.direccion_usuario,*/
+                                NUMERO_DOCUMENTO: values.NUMERO_DOCUMENTO,
+                                SEXO: e.target.value,
                             }
-                        )} value={values.sexo_usuario} className="form-select" id="sexo" >
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                            <option value="O">Otro</option>
+                        )} value={values.SEXO} className="form-select" id="sexo" >
+                            <option value="0">Masculino</option>
+                            <option value="1">Femenino</option>
+                            <option value="2">Otro</option>
                         </select>
                     }
                 </div>
 
-                
-                <label className="form-label col-sm-4 labelForm">Telefono</label>
+
+                <label className="form-label col-sm-4 labelForm">Tipo de documento</label>
                 <div className="col-md-8 listaOpciones">
-                    { crear ?
-                        <input onChange={(e) => setUserPhone(e.target.value)} value={userphone} 
-                            type="number" className="form-control" id="telefono"  placeholder="Telefono" required/>
-                        : <input onChange={(e) => setValues(
+                    {crear ?
+                        <select onChange={(e) => SetTIPO_DOCUMENTO(e.target.value)} value={TIPO_DOCUMENTO} 
+                                className="form-select" id="tipo_documento" >
+                            <option value='0'>Cedula de Ciudadania</option>
+                            <option value='1'>Tarjeta de Identidad</option>
+                        </select>
+                        :<select onChange={(e) => setValues(
                             {
-                                id:values.id,
-                                /*nombre_usuario:values.nombre_usuario,
-                                tipo_documento:values.tipo_documento,
-                                sexo_usuario:values.sexo_usuario,
-                                nacionalidad_usuario:values.nacionalidad_usuario,*/
-                                telefono_usuario:e.target.value,
-                                //direccion_usuario:values.direccion_usuario,
+                                NUMERO_DOCUMENTO: values.NUMERO_DOCUMENTO,
+                                TIPO_DOCUMENTO:e.target.value,
                             }
-                        )} value={values.telefono_usuario} type="number" className="form-control" id="telefono"  placeholder="Telefono" required/>
+                        )} value={values.TIPO_DOCUMENTO} className="form-select" id="tipo_documento" >
+                            <option value="0">Cedula de Ciudadania</option>
+                            <option value="1">Tarjeta de Identidad</option>
+                        </select>
                     }
                 </div>
 
-                
-                <label htmlFor="validationDefault03" className="form-label col-sm-4 labelForm">Direccion</label>
+
+                <label htmlFor="validationDefault03" className="form-label col-sm-4 labelForm">Correo Electronico</label>
                 <div className="col-md-8 ">
                     {crear ?
-                        <input onChange={(e) => setUserAddres(e.target.value)} value={useraddres} 
-                            type="text" className="form-control" id="direccion" placeholder="Direccion" required/>
+                        <input onChange={(e) => SetCORREO_ELECTRONICO(e.target.value)} value={CORREO_ELECTRONICO} 
+                            type="text" className="form-control" id="correo_electronico" placeholder="correo" required/>
                         :<input onChange={(e) => setValues(
                             {
-                                id:values.id,
-                                /*nombre_usuario:values.nombre_usuario,
-                                tipo_documento:values.tipo_documento,
-                                sexo_usuario:values.sexo_usuario,
-                                nacionalidad_usuario:values.nacionalidad_usuario,
-                                telefono_usuario:values.telefono_usuario,*/
-                                direccion_usuario:e.target.value,
+                                NUMERO_DOCUMENTO: values.NUMERO_DOCUMENTO,
+                                CORREO_ELECTRONICO:e.target.value,
                             }
-                        )} value={values.direccion_usuario} type="text" className="form-control" id="direccion" placeholder="Direccion" required/>
+                        )} value={values.CORREO_ELECTRONICO} type="text" className="form-control" id="correo_electronico" placeholder="correo" required/>
+                    }
+                </div>
+
+                <label className="form-label col-sm-4 labelForm">Telefono Celular</label>
+                <div className="col-md-8 listaOpciones">
+                    { crear ?
+                        <input onChange={(e) => SetCELUAR(e.target.value)} value={CELUAR} 
+                            type="number" className="form-control" id="celular"  placeholder="celular" required/>
+                        : <input onChange={(e) => setValues(
+                            {
+                                NUMERO_DOCUMENTO: values.NUMERO_DOCUMENTO,
+                                CELUAR:e.target.value,
+                            }
+                        )} value={values.CELUAR} type="number" className="form-control" id="celular"  placeholder="celular" required/>
+                    }
+                </div>
+
+
+                <label className="form-label col-sm-4 labelForm">ROL</label>
+                <div className="col-md-8 listaOpciones">
+                    {crear ?
+                        <select onChange={(e) => SetROL(e.target.value)} value={ROL} 
+                                className="form-select" id="rol" >
+                            <option value="0">Usuario(a)</option>
+                            <option value="1">Administrador(a)</option>
+                        </select>
+                        :<select onChange={(e) => setValues(
+                            {
+                                NUMERO_DOCUMENTO: values.NUMERO_DOCUMENTO,
+                                ROL:e.target.value,
+                            }
+                        )} value={values.ROL} className="form-select" id="rol" >
+                            <option value="0">Usuario(a)</option>
+                            <option value="1">Administrador(a)</option>
+                        </select>
                     }
                 </div>
 
                 
-                <label className="form-label col-sm-4 labelForm">Nacionalidad</label>
-                <div className="col-md-8 listaOpciones">
-                    {crear ?
-                        <select onChange={(e) => setUserSource(e.target.value)} value={usersource} 
-                                className="form-select" id="nacionalidad" >
-                            <option value="Colombia">Colombiano(a)</option>
-                            <option value="Extranjero">Extranjero(a)</option>
-                        </select>
-                        :<select onChange={(e) => setValues(
-                            {
-                                id:values.id,
-                                /*nombre_usuario:values.nombre_usuario,
-                                tipo_documento:values.tipo_documento,
-                                sexo_usuario:values.sexo_usuario,*/
-                                nacionalidad_usuario:e.target.value,
-                                /*telefono_usuario:values.telefono_usuario,
-                                direccion_usuario:values.direccion_usuario,*/
-                            }
-                        )} value={values.nacionalidad_usuario} className="form-select" id="nacionalidad" >
-                            <option value="Colombia">Colombiano(a)</option>
-                            <option value="Extranjero">Extranjero(a)</option>
-                        </select>
-                    }
-                </div>
-
-                                                
                 {crear ?
                     <>
                         <label htmlFor="validationDefault03" type = "password" className="form-label col-sm-4 labelForm">Crea una Contraseña</label>
                         <div className="col-md-8">
-                        <input onChange={(e) => setUserPassword(e.target.value)} value={userpassword} 
-                            type="password" className="form-control" id="direccion" placeholder="Contrasena"/>
+                        <input onChange={(e) => SetPASSWORD(e.target.value)} value={PASSWORD} 
+                            type="password" className="form-control" id="password" placeholder="Contraseña"/>
                         </div>
                         <label htmlFor="validationDefault03"  className="form-label col-sm-4 labelForm">Repite Contreseña</label>
                         <div className="col-md-8">
-                            <input onChange={(e) => setUserPassword2(e.target.value)} value={userpassword2} 
-                                    type="password" className="form-control" id="direccion" placeholder="Contrasena2"/>
+                            <input onChange={(e) => SetPASSWORD2(e.target.value)} value={PASSWORD2} 
+                                    type="password" className="form-control" id="password2" placeholder="Contraseña2"/>
                         </div>
                     </>
                     :<></>

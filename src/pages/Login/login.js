@@ -9,7 +9,7 @@ import './login.css'
 import Header from '../../components/Header/index'
 
 export default function Login() {
-    const [username, setUsername] = useState('');
+    const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useHistory();
 
@@ -21,7 +21,7 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = {
-            nombre_usuario: username,
+            numero_identificacion: id,
             clave_usuario: password
         }
         fetch('http://localhost:5000/users/login', {
@@ -72,9 +72,9 @@ export default function Login() {
                             type="text" 
                             id="login" 
                             className="fadeIn second" 
-                            onChange={(e) => setUsername(e.target.value)} 
-                            value={username} 
-                            placeholder="username" 
+                            onChange={(e) => setId(e.target.value)} 
+                            value={id} 
+                            placeholder="numero identificación" 
                         />
                         <input 
                             type="password" 

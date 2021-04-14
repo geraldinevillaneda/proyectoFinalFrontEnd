@@ -3,14 +3,17 @@ import {useHistory} from 'react-router-dom'
 
 const initialFieldValues = 
 {
-    id: '',
-    nombre_usuario: '',
-    tipo_documento: '',
-    sexo_usuario: '',
-    nacionalidad_usuario: '',
-    telefono_usuario: '',
-    direccion_usuario: '',
-    clave_usuario: ''
+    ID_USUARIO: '',
+    PRIMER_NOMBRE: '', 
+    SEGUNDO_NOMBRE: '', 
+    PRIMER_APELLIDO: '', 
+    SEGUNDO_APELLIDO: '', 
+    SEXO: '', 
+    TIPO_DOCUMENTO: '',
+    NUMERO_DOCUMENTO: '',
+    CORREO_ELECTRONICO: '',
+    CELUAR: '',
+    ROL: '',
 }
 
 export default function  LeerUsuario () {
@@ -69,13 +72,17 @@ export default function  LeerUsuario () {
             }
             else
             {
-                values.id = result.datos.id;
-                values.nombre_usuario = result.datos.nombre_usuario;
-                values.tipo_documento = result.datos.tipo_documento;
-                values.sexo_usuario = result.datos.sexo_usuario;
-                values.nacionalidad_usuario = result.datos.nacionalidad_usuario;
-                values.telefono_usuario = result.datos.telefono_usuario;
-                values.direccion_usuario = result.datos.direccion_usuario;
+                values.ID_USUARIO = result.datos.id_usuario;
+                values.PRIMER_NOMBRE =  result.datos.primer_nombre;
+                values.SEGUNDO_NOMBRE =  result.datos.segundo_nombre;
+                values.PRIMER_APELLIDO =  result.datos.primer_apellido;
+                values.SEGUNDO_APELLIDO =  result.datos.segundo_apellido;
+                values.SEXO =  result.datos.sexo;
+                values.TIPO_DOCUMENTO = result.datos.tipo_documento;
+                values.NUMERO_DOCUMENTO = result.datos.numero_documento;
+                values.CORREO_ELECTRONICO = result.datos.correo_electronico;
+                values.CELUAR = result.datos.celular;
+                values.ROL = result.datos.rol;
             }
         })
     })
@@ -84,25 +91,28 @@ export default function  LeerUsuario () {
     return(
         <>
             <label className="form-label col-sm-4 labelForm">Tipo de documento:</label>
-            <label type="number" className="form-control">{values.tipo_documento}</label>
+            <label type="number" className="form-control">{values.TIPO_DOCUMENTO}</label>
 
             <label className="form-label col-sm-4 labelForm">Numero de documento:</label>
-            <label type="number" className="form-control">{values.id}</label>
+            <label type="number" className="form-control">{values.NUMERO_DOCUMENTO}</label>
 
-            <label className="form-label col-sm-4 labelForm">Nombre:</label>
-            <label type="number" className="form-control">{values.nombre_usuario}</label>
+            <label className="form-label col-sm-4 labelForm">Nombres:</label>
+            <label type="number" className="form-control">{values.PRIMER_NOMBRE} {values.SEGUNDO_NOMBRE}</label>
+
+            <label className="form-label col-sm-4 labelForm">Apellidos:</label>
+            <label type="number" className="form-control">{values.PRIMER_NOMBRE} {values.SEGUNDO_APELLIDO}</label>
 
             <label className="form-label col-sm-4 labelForm">Sexo:</label>
-            <label type="number" className="form-control">{values.sexo_usuario}</label>
+            <label type="number" className="form-control">{values.SEXO}</label>
 
-            <label className="form-label col-sm-4 labelForm">Nacionalidad:</label>
-            <label type="number" className="form-control">{values.nacionalidad_usuario}</label>
+            <label className="form-label col-sm-4 labelForm">Celular:</label>
+            <label type="number" className="form-control">{values.CELUAR}</label>
 
-            <label className="form-label col-sm-4 labelForm">Telefono:</label>
-            <label type="number" className="form-control">{values.telefono_usuario}</label>
+            <label className="form-label col-sm-4 labelForm">Correo Electronico:</label>
+            <label type="number" className="form-control">{values.CORREO_ELECTRONICO}</label>
 
-            <label className="form-label col-sm-4 labelForm">Direccion:</label>
-            <label type="number" className="form-control">{values.direccion_usuario}</label>
+            <label className="form-label col-sm-4 labelForm">Rol:</label>
+            <label type="number" className="form-control">{values.ROL}</label>
 
             <br/>
             <br/>
