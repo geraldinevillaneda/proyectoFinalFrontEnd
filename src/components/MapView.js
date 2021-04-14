@@ -7,7 +7,7 @@ import Markers from './Markers'
 
 var data = []
 
-fetch('http://localhost:5000/gasolineras', 
+fetch('http://localhost:5000/sedes', 
 {
     method: 'GET'
 }).then((respuesta) => {

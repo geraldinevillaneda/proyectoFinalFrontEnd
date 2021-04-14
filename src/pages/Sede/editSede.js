@@ -1,6 +1,6 @@
 import React from 'react'
 
-import FormStation from '../Gasolinera/createGasolinera'
+import FormSede from '../Sede/createSede'
 import {Helmet} from 'react-helmet';
 
 /* import './createUser/userCreate.css' */
@@ -12,7 +12,7 @@ export default function  EditUser() {
             <Helmet>
                 <title>Editar Gasolinera</title>
             </Helmet>
-            <FormStation />
+            <FormSede />
         </>
     );
     

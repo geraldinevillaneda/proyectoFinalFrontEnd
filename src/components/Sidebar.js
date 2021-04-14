@@ -4,7 +4,7 @@ import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserEdit, faGasPump, faMapMarkedAlt, faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faUserEdit, faGasPump, faMapMarkedAlt, faUniversity, faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -104,11 +104,9 @@ export default (props = {}) => {
               {/* <NavItem title="Transactions" icon={faHandHoldingUsd} link={Routes.Transactions.path} /> */}
               {/* <NavItem title="Settings" icon={faCog} link={Routes.Settings.path} /> */}
 
-              <CollapsableNavItem eventKey="tables/estacion" title="Estaciones" icon={faGasPump}>
-                <NavItem title="Crear Estación" link={Routes.CreateStation.path} />
-                <NavItem title="Consultar Estación" link={Routes.SearchStation.path} />
-                <NavItem title="Editar Estación" link={Routes.BootstrapTables.path} />
-                <NavItem title="Eliminar Estación" link={Routes.BootstrapTables.path} />
+              <CollapsableNavItem eventKey="tables/estacion" title="Sedes" icon={faUniversity}>
+                <NavItem title="Crear Sede" link={Routes.CreateSede.path} />
+                <NavItem title="Consultar Sede" link={Routes.SearchSede.path} />
               </CollapsableNavItem>
 
               {/* <CollapsableNavItem eventKey="examples/" title="Page Examples" icon={faFileAlt}>

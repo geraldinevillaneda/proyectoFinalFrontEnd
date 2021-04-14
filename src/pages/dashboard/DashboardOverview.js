@@ -8,12 +8,12 @@ import { CounterWidget, CircleChartWidget, BarChartWidget, TeamMembersWidget, Pr
 import { PageVisitsTable } from "../../components/Tables";
 import { trafficShares, totalOrders } from "../../data/charts";
 
-import Gasolineras from '../../components/gasolineras'
+import Sedes from '../../components/sedes'
 
 export default () => {
   return (
     <>
-      <Gasolineras />
+      <Sedes />
 {/*       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
         <Dropdown className="btn-toolbar">
           <Dropdown.Toggle as={Button} variant="primary" size="sm" className="me-2">

@@ -8,16 +8,14 @@ const Markers = (props)=> {
 
     const {data} = props;
 
-    const markers = data.map((gasolinera, i) => (
+    const markers = data.map((sede, i) => (
         /* console.log(gasolinera[i]) */
-        <Marker key={i} position = {[gasolinera.latitud_estacion, gasolinera.longitud_estacion]} icon={IconLocation}>
+        <Marker key={i} position = {[sede.latitud, sede.longitud]} icon={IconLocation}>
             <Popup>
                 <p>
-                    Nombre: {gasolinera.nombre_estacion} <br/>
-                    Direccion: {gasolinera.direccion_estacion} <br/>
-                    Telefono: {gasolinera.telefono_estacion} <br/>
-                    Lactitud: {gasolinera.latitud_estacion} <br/>
-                    Longitud: {gasolinera.longitud_estacion} <br/>
+                    Nombre: {sede.nombre_sede} <br/>
+                    Lactitud: {sede.latitud} <br/>
+                    Longitud: {sede.longitud} <br/>
                 </p>
             </Popup>
         </Marker>

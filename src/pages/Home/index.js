@@ -1,7 +1,7 @@
 import React from 'react';
 import {Helmet} from 'react-helmet';
 
-import Gasolineras from '../../components/gasolineras'
+import Sedes from '../../components/sedes'
 import '../../styles/App.css';
 
 
@@ -14,7 +14,7 @@ export default function Home ()
                     <title> HOME || MAP</title>
                 </Helmet>
                 <div>
-                    <Gasolineras />
+                    <Sedes />
                 </div>
             </div>
         </>
