@@ -14,6 +14,10 @@ import CreateSede from './Sede/createSede'
 import SearchSede from './Sede/searchSede'
 import ReadSede from './Sede/leerSede'
 import EditSede from './Sede/editSede'
+import CreateGroup from './Group/createGroup'
+import SearchGroup from './Group/searchGroup'
+import ReadGroup from './Group/readGroup'
+import EditGroup from './Group/editGroup'
 
 import Transactions from "./Transactions";
 import Settings from "./Settings";
@@ -143,7 +147,11 @@ export default () => (
     <RouteWithSidebar exact path={Routes.CreateSede.path} component={CreateSede} />
     <RouteWithSidebar exact path={Routes.SearchSede.path} component={SearchSede} />
     <RouteWithSidebar exact path={Routes.ReadSede.path} component={ReadSede} />
-    <RouteWithSidebar exact path={Routes.EditSede.path} component={EditSede} />
+    <RouteWithSidebar exact path={Routes.EditSede.path} component={EditSede} />    
+    <RouteWithSidebar exact path={Routes.CreateGroup.path} component={CreateGroup} />
+    <RouteWithSidebar exact path={Routes.SearchGroup.path} component={SearchGroup} />
+    <RouteWithSidebar exact path={Routes.ReadGroup.path} component={ReadGroup} />
+    <RouteWithSidebar exact path={Routes.EditGroup.path} component={EditGroup} />
 
     <RouteWithSidebar exact path={Routes.Transactions.path} component={Transactions} />
     <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} />

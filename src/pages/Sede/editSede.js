@@ -5,12 +5,12 @@ import {Helmet} from 'react-helmet';
 
 /* import './createUser/userCreate.css' */
 
-export default function  EditUser() {
+export default function  EditSede() {
 
     return (
         <>
             <Helmet>
-                <title>Editar Gasolinera</title>
+                <title>Editar Sede</title>
             </Helmet>
             <FormSede />
         </>
