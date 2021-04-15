@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
-import {Helmet} from 'react-helmet';
-import LeerGasolinera from './leerSede'
+import {Helmet} from 'react-helmet'
 
 
 export default function SearchSede() {

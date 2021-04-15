@@ -11,6 +11,10 @@ export const Routes = {
     SearchSede: {path: "/buscar/Sede"},
     ReadSede: {path: "/datos/Sede"},
     EditSede: {path: "/editar/Sede"},
+    CreateGroup: {path: "/crear/Grupo"},
+    SearchGroup: {path: "/buscar/Grupo"},
+    ReadGroup: {path: "/datos/Grupo"},
+    EditGroup: {path: "/editar/Grupo"},
 
     Transactions: { path: "/transactions" },
     Settings: { path: "/settings" },
