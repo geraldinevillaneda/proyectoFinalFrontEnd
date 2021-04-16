@@ -13,6 +13,10 @@ import CreateSede from './Sede/createSede'
 import SearchSede from './Sede/searchSede'
 import ReadSede from './Sede/leerSede'
 import EditSede from './Sede/editSede'
+import CreateCourse from './Curso/createCourse'
+import SearchCourse from './Curso/searchCourse'
+import ReadCourse from './Curso/readCourse'
+import EditCourse from './Curso/editCourse'
 import CreateGroup from './Group/createGroup'
 import SearchGroup from './Group/searchGroup'
 import ReadGroup from './Group/readGroup'
@@ -21,6 +25,13 @@ import CreateRol from './Rol/createRol'
 import SearchRol from './Rol/searchRol'
 import ReadRol from './Rol/readRol'
 import EditRol from './Rol/editRol'
+import SearchMemUsr from './membresias/searchMemUsr'
+import ReadMemxUsr from './membresias/readMemxUsr'
+import SearchMembresia from './membresias/searchMembresia'
+import CreateMembresia from './membresias/createMembresia'
+import ReadMembresia from './membresias/readMembresia'
+import EditMembresia from './membresias/editMembresia'
+import AsignarMembresia from './membresias/AsignarMembresias'
 
 // components
 import Sidebar from "../components/Sidebar";
@@ -104,7 +115,11 @@ export default () => (
     <RouteWithSidebar exact path={Routes.CreateSede.path} component={CreateSede} />
     <RouteWithSidebar exact path={Routes.SearchSede.path} component={SearchSede} />
     <RouteWithSidebar exact path={Routes.ReadSede.path} component={ReadSede} />
-    <RouteWithSidebar exact path={Routes.EditSede.path} component={EditSede} />    
+    <RouteWithSidebar exact path={Routes.EditSede.path} component={EditSede} />   
+    <RouteWithSidebar exact path={Routes.CreateCourse.path} component={CreateCourse} />
+    <RouteWithSidebar exact path={Routes.SearchCourse.path} component={SearchCourse} />
+    <RouteWithSidebar exact path={Routes.ReadCourse.path} component={ReadCourse} />
+    <RouteWithSidebar exact path={Routes.EditCourse.path} component={EditCourse} />  
     <RouteWithSidebar exact path={Routes.CreateGroup.path} component={CreateGroup} />
     <RouteWithSidebar exact path={Routes.SearchGroup.path} component={SearchGroup} />
     <RouteWithSidebar exact path={Routes.ReadGroup.path} component={ReadGroup} />
@@ -113,6 +128,14 @@ export default () => (
     <RouteWithSidebar exact path={Routes.SearchRol.path} component={SearchRol} />
     <RouteWithSidebar exact path={Routes.ReadRol.path} component={ReadRol} />
     <RouteWithSidebar exact path={Routes.EditRol.path} component={EditRol} />
+    <RouteWithSidebar exact path={Routes.SearchMemUsr.path} component={SearchMemUsr} />
+    <RouteWithSidebar exact path={Routes.ReadMemxUsr.path} component={ReadMemxUsr} />
+    <RouteWithSidebar exact path={Routes.SearchMembresia.path} component={SearchMembresia} />
+    <RouteWithSidebar exact path={Routes.CreateMembresia.path} component={CreateMembresia} />
+    <RouteWithSidebar exact path={Routes.ReadMembresia.path} component={ReadMembresia} />
+    <RouteWithSidebar exact path={Routes.EditMembresia.path} component={EditMembresia} />
+    <RouteWithSidebar exact path={Routes.AsignarMembresia.path} component={AsignarMembresia} />
+
 
     <Redirect to={Routes.NotFound.path} />
   </Switch>

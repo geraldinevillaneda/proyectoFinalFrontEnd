@@ -78,7 +78,7 @@ export default function  LeerSede () {
                     <label type="number" className="col-md-6">{values.ESTADO}</label>
 
                     <label className="form-label col-sm-6 labelForm">Nombre de la Sede:</label>
-                    <label type="number" className="col-md-6">{values.NOMBRE_SEDE}</label>
+                    <label type="text" className="col-md-6">{values.NOMBRE_SEDE}</label>
 
                     <label className="form-label col-sm-6 labelForm">Latitud:</label>
                     <label type="number" className="col-md-6">{values.LATITUD}</label>
