@@ -109,6 +109,11 @@ export default (props = {}) => {
                 <NavItem title="Consultar Sede" link={Routes.SearchSede.path} />
               </CollapsableNavItem>
 
+              <CollapsableNavItem eventKey="tables/estacion" title="Cursos" icon={faUniversity}>
+                <NavItem title="Crear Curso" link={Routes.CreateCourse.path} />
+                <NavItem title="Consultar Curso" link={Routes.SearchCourse.path} />
+              </CollapsableNavItem>
+
               <CollapsableNavItem eventKey="tables/estacion" title="Grupos" icon={faUniversity}>
                 <NavItem title="Crear Grupo" link={Routes.CreateGroup.path} />
                 <NavItem title="Consultar Grupo" link={Routes.SearchGroup.path} />

@@ -3,9 +3,9 @@ import {useHistory} from 'react-router-dom'
 import {Helmet} from 'react-helmet'
 
 
-export default function SearchSede() {
+export default function SearchCourse() {
     
-    const [id, setId_sede] = useState("");
+    const [id, setId_curso] = useState("");
     const navigate = useHistory();
     const valores = JSON.parse(sessionStorage.getItem('login'));
     const token = valores.datos.token;
@@ -15,7 +15,7 @@ export default function SearchSede() {
     {
         e.preventDefault();
         
-        fetch('http://localhost:5000/sedes/' + id, {
+        fetch('http://localhost:5000/cursos/' + id, {
             method: 'GET',
             headers:{
                 'Content-Type': 'application/json',
@@ -27,10 +27,10 @@ export default function SearchSede() {
                 if(result.Auth)
                 {
                     alert(result.done)
-                    sessionStorage.setItem('sede', JSON.stringify({
+                    sessionStorage.setItem('curso', JSON.stringify({
                         datos: result.datos
                     }));
-                    navigate.push('/datos/Sede')
+                    navigate.push('/datos/Curso')
                 }
                 else
                 {
@@ -44,13 +44,13 @@ export default function SearchSede() {
         <div className="wrapper fadeInDown">
             <div id="formContent" className="editarUsuario">
                 <Helmet>
-                    <title>Sede</title>
+                    <title>Curso</title>
                 </Helmet>
-                <h2 className='titulo'>Buscar Sede</h2>
+                <h2 className='titulo'>Buscar Curso</h2>
                 <form className="row g-3 formulario" autoComplete="off" novalidate>
                 <div className="col-md-8">
-                    <input onChange={(e) => setId_sede(e.target.value)} value={id} 
-                        type="number" className="form-control" id="id" placeholder="Buscar Sede" required/>
+                    <input onChange={(e) => setId_curso(e.target.value)} value={id} 
+                        type="number" className="form-control" id="id" placeholder="Buscar Curso" required/>
                         </div>
                     <button className="btn btn-primary  col-sm-1" type="submit"  onClickCapture={HandleSubmitBuscar} ><i className="fas fa-search"></i></button>
                 </form>
