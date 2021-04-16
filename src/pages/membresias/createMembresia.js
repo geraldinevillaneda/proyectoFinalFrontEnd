@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {Helmet} from 'react-helmet';
@@ -8,35 +7,32 @@ import '../Login/login'
 
 const initialFieldValues = 
 {
-    ID_SEDE:'',
+    ID_MEMBRESIA:'',
     ESTADO:'',
-    NOMBRE_SEDE:'',
-    LATITUD:'',
-    LONGITUD:'',
-    ID_CIUDAD:'',
-    ID_USUARIO:'',
-    t001_usuarios_id_usuario:'',
+    NOMBRE_MEMBRESIA:'',
+    DURACION:'',
+    PRECIO:'',
+
 }
 
 
-export default function CreateSede (){
+export default function CreateMembresia (){
 
 
     const [values, setValues] = useState(initialFieldValues);
 
     const [ESTADO,  setESTADO] = useState('');
-    const [NOMBRE_SEDE, setNOMBRE_SEDE] = useState('');
-    const [LATITUD, setLATITUD] = useState('');
-    const [LONGITUD, setLONGITUD] = useState('');
-    const [ID_CIUDAD, setID_CIUDAD] = useState('');
-    const [ID_USUARIO, setID_USUARIO] = useState('');
+    const [NOMBRE_MEMBRESIA, setNOMBRE_SEDE] = useState('');
+    const [DURACION, setLATITUD] = useState('');
+    const [PRECIO, setLONGITUD] = useState('');
+
     
     const   url = window.location.href;
     const navigator = useHistory();
     let crear = false;
 
 
-    if(url.includes('crear/Sede'))
+    if(url.includes('crear/membresia'))
     {
         crear = true
     }
@@ -45,12 +41,12 @@ export default function CreateSede (){
         
         crear = false;
 
-        const datosSedes = JSON.parse(sessionStorage.getItem('sede'));
+        const datosMembresia = JSON.parse(sessionStorage.getItem('membresia'));
 
         const valores =  JSON.parse(sessionStorage.getItem('login'));
         const token = valores.datos.token;
 
-        fetch('http://localhost:5000/sedes/' + datosSedes.datos.id_sede, {
+        fetch('http://localhost:5000/membresias/' + datosMembresia.datos.id_membresia, {
             method: 'GET',
             headers:{
                 'Content-Type': 'application/json',
@@ -61,11 +57,10 @@ export default function CreateSede (){
                 if(result.Auth)
                 {         
                     values.ESTADO = result.datos.estado;
-                    values.NOMBRE_SEDE = result.datos.nombre_sede;
-                    values.LATITUD = result.datos.latitud;
-                    values.LONGITUD = result.datos.longitud;
-                    values.ID_CIUDAD = result.datos.id_ciudad;
-                    values.ID_USUARIO = result.datos.id_usuario;
+                    values.NOMBRE_MEMBRESIA = result.datos.nombre_membresia;
+                    values.DURACION = result.datos.duracion;
+                    values.PRECIO = result.datos.precio;
+
                 }
                 else
                 {
@@ -87,27 +82,24 @@ export default function CreateSede (){
     {
         e.preventDefault();
 
-        const datosSedes = JSON.parse(sessionStorage.getItem('sede'));
+        const datosSedes = JSON.parse(sessionStorage.getItem('membresia'));
 
         const valores = JSON.parse(sessionStorage.getItem('login'));
         const token = valores.datos.token;
         const userID = valores.datos.id;
         
         const data = {
-            id_sede: datosSedes.datos.id_sede,
+            id_membresia: datosSedes.datos.id_membresia,
             estado: document.getElementById('estado').value,
-            nombre_sede: document.getElementById('nombre_sede').value,
-            latitud: document.getElementById('latitud').value,
-            longitud: document.getElementById('longitud').value,
-            id_ciudad: document.getElementById('id_ciudad').value,
-            id_usuario: userID,
-            t001_usuarios_id_usuario: userID,
+            nombre_membresia: document.getElementById('nombre_membresia').value,
+            duracion: document.getElementById('duracion').value,
+            precio: document.getElementById('precio').value,
         };
         console.log('data');
         console.log(data);
         
 
-        fetch(('http://localhost:5000/sedes/update/' + data.ID_SEDE) ,{
+        fetch(('http://localhost:5000/membresias/update/' + data.id_membresia) ,{
             method:'POST',
             body: JSON.stringify(data),
             headers: {
@@ -121,11 +113,11 @@ export default function CreateSede (){
                 if(result.Auth)
                 {
                     alert(result.done);
-                    sessionStorage.removeItem('sede');
-                    sessionStorage.setItem('sede', JSON.stringify({
+                    sessionStorage.removeItem('membresia');
+                    sessionStorage.setItem('membresia', JSON.stringify({
                         datos: data
                     }));
-                    navigator.push('/datos/Sede');
+                    navigator.push('/datos/membresia');
                 }
                 else
                 {
@@ -155,22 +147,19 @@ export default function CreateSede (){
         const data = {
 
             ESTADO: document.getElementById('estado').value,
-            NOMBRE_SEDE: document.getElementById('nombre_sede').value,
-            LATITUD: document.getElementById('latitud').value,
-            LONGITUD: document.getElementById('longitud').value,
-            ID_CIUDAD: document.getElementById('id_ciudad').value,
-            ID_USUARIO: userID,
-            t001_usuarios_id_usuario: userID,
+            NOMBRE_MEMBRESIA: document.getElementById('nombre_membresia').value,
+            DURACION: document.getElementById('duracion').value,
+            PRECIO: document.getElementById('precio').value,
         };
 
 
-        fetch('http://localhost:5000/sedes/agregar',{
+        fetch('http://localhost:5000/membresias/agregar',{
             method:'POST',
             body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
                 'x-access-token': token
-        }
+            }
         }).then((respuesta) => {
             respuesta.json().then((result) => {
                 if(result.Auth)
@@ -194,28 +183,27 @@ export default function CreateSede (){
                 {crear ?
                     <>
                         <Helmet>
-                            <title>Nueva Sede</title>
+                            <title>Nueva Membresia</title>
                         </Helmet>
-                        <h2 className='titulo'>Formulario de ingreso de Sede</h2>
+                        <h2 className='titulo'>Formulario de ingreso de membresia</h2>
                     </>
                     :
                     <>
                         <Helmet>
-                            <title>Editar Sede</title>
+                            <title>Editar membresia</title>
                         </Helmet>
-                        <h2 className='titulo'>Editar Sede</h2>
+                        <h2 className='titulo'>Editar membresia</h2>
                     </>
                 }
                 <form className="row g-3 formulario" autoComplete="off" >
 
-                    <label className="form-label col-sm-4 labelForm">Estado de Sede</label>
+                    <label className="form-label col-sm-4 labelForm">Estado de la membresia</label>
                     <div className="col-md-8 listaOpciones">
                         {crear ?
                             <select onChange={(e) => setESTADO(e.target.value)} value={ESTADO} 
                                     className="form-select" id="estado" >
                                 <option value="0">0</option>
                                 <option value="1">1</option>
-                                <option value="2">2</option>
                             </select>
                             :<select onChange={(e) => setValues(
                                 {
@@ -224,70 +212,49 @@ export default function CreateSede (){
                             )} value={values.ESTADO} className="form-select" id="estado" >
                                 <option value="0">0</option>
                                 <option value="1">1</option>
-                                <option value="2">2</option>
                             </select>
                         }
                     </div>
 
-                    <label className="form-label col-sm-4 labelForm">Nombre de la Sede</label>
+                    <label className="form-label col-sm-4 labelForm">Nombre de la membresia</label>
                     <div className="col-md-8">
                         {crear ?
-                            <input onChange={(e) => setNOMBRE_SEDE(e.target.value)} value={NOMBRE_SEDE}  
-                                type="text" className="form-control" id="nombre_sede" placeholder="Nombre sede" required/>
+                            <input onChange={(e) => setNOMBRE_SEDE(e.target.value)} value={NOMBRE_MEMBRESIA}  
+                                type="text" className="form-control" id="nombre_membresia" placeholder="Nombre sede" required/>
                             :<input onChange={(e) => setValues(
                                 {
-                                    NOMBRE_SEDE:e.target.value,
+                                    NOMBRE_MEMBRESIA:e.target.value,
                                 }
-                            )} value={values.NOMBRE_SEDE} type="text" className="form-control" id="nombre_sede" placeholder="Nombre sede" required />
+                            )} value={values.NOMBRE_MEMBRESIA} type="text" className="form-control" id="nombre_membresia" placeholder="Nombre sede" required />
                         } 
                     </div>
 
-                    
-                    <label className="form-label col-sm-4 labelForm">Lactitud Estacion</label>
-                    <div className="col-md-8 listaOpciones">
-                        { crear ?
-                            <input onChange={(e) => setLATITUD(e.target.value)} value={LATITUD} 
-                                type="number" className="form-control" id="latitud"  placeholder="Latitud" required/>
-                            : <input onChange={(e) => setValues(
+                    <label className="form-label col-sm-4 labelForm">Duracion de la membresia</label>
+                    <div className="col-md-8">
+                        {crear ?
+                            <input onChange={(e) => setLATITUD(e.target.value)} value={DURACION}  
+                                type="number" className="form-control" id="duracion" placeholder="Duracion de la membresia" required/>
+                            :<input onChange={(e) => setValues(
                                 {
-                                    LATITUD:e.target.value,
+                                    DURACION:e.target.value,
                                 }
-                            )} value={values.LATITUD} type="number" className="form-control" id="latitud"  placeholder="Latitud" required/>
-                        }
+                            )} value={values.DURACION} type="text" className="form-control" id="duracion" placeholder="Duracion de la membresia" required />
+                        } 
+                    </div>
+                    
+                    <label className="form-label col-sm-4 labelForm">Precio de la membresia</label>
+                    <div className="col-md-8">
+                        {crear ?
+                            <input onChange={(e) => setLONGITUD(e.target.value)} value={PRECIO}  
+                                type="number" className="form-control" id="precio" placeholder="Precio de la membresia" required/>
+                            :<input onChange={(e) => setValues(
+                                {
+                                    PRECIO:e.target.value,
+                                }
+                            )} value={values.PRECIO} type="text" className="form-control" id="precio" placeholder="Precio de la membresia" required />
+                        } 
                     </div>
 
-
-                    <label htmlFor="validationDefault03" className="form-label col-sm-4 labelForm">Longitud Estación</label>
-                    <div className="col-md-8 listaOpciones">
-                        { crear ?
-                            <input onChange={(e) => setLONGITUD(e.target.value)} value={LONGITUD} 
-                                type="number" className="form-control" id="longitud"  placeholder="longitud" required/>
-                            : <input onChange={(e) => setValues(
-                                {
-                                    LONGITUD:e.target.value,
-                                }
-                            )} value={values.LONGITUD} type="number" className="form-control" id="longitud"  placeholder="longitud" required/>
-                        }
-                    </div>
-
-
-                    <label htmlFor="validationDefault03" className="form-label col-sm-4 labelForm">Id Ciudad</label>
-                    <div className="col-md-8 listaOpciones">
-                        { crear ?
-                            <input onChange={(e) => setID_CIUDAD(e.target.value)} value={ID_CIUDAD} 
-                                type="number" className="form-control" id="id_ciudad"  placeholder="id_ciudad" required/>
-                            : <input onChange={(e) => setValues(
-                                {
-                                    ID_CIUDAD:e.target.value,
-                                }
-                            )} value={values.ID_CIUDAD} type="number" className="form-control" id="id_ciudad"  placeholder="id_ciudad" required/>
-                        }
-                    </div>
-
-                    
-                    
-
-                    
                     
                                                     
                     <div className="col-12 divBoton">

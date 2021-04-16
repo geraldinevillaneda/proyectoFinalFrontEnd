@@ -4,7 +4,7 @@ import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserEdit, faGasPump, faMapMarkedAlt, faUniversity, faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faUserEdit, faCreditCard, faGasPump, faMapMarkedAlt, faUniversity, faBook, faBoxOpen, faChartPie, faCog, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -107,6 +107,13 @@ export default (props = {}) => {
               <CollapsableNavItem eventKey="tables/estacion" title="Sedes" icon={faUniversity}>
                 <NavItem title="Crear Sede" link={Routes.CreateSede.path} />
                 <NavItem title="Consultar Sede" link={Routes.SearchSede.path} />
+              </CollapsableNavItem>
+              <CollapsableNavItem eventKey="tables/estacion" title="Membresia" icon={faCreditCard}>
+              <NavItem title="Buscar membresia" link={Routes.SearchMembresia.path} />
+              <NavItem title="Crear Membresia" link={Routes.CreateMembresia.path} />
+              <NavItem title="Informacion Membresia" link={Routes.SearchMemUsr.path} />
+              <NavItem title="Asignar membresia" link={Routes.AsignarMembresia.path} />
+                
               </CollapsableNavItem>
 
               {/* <CollapsableNavItem eventKey="examples/" title="Page Examples" icon={faFileAlt}>

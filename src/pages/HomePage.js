@@ -14,6 +14,13 @@ import CreateSede from './Sede/createSede'
 import SearchSede from './Sede/searchSede'
 import ReadSede from './Sede/leerSede'
 import EditSede from './Sede/editSede'
+import SearchMemUsr from './membresias/searchMemUsr'
+import ReadMemxUsr from './membresias/readMemxUsr'
+import SearchMembresia from './membresias/searchMembresia'
+import CreateMembresia from './membresias/createMembresia'
+import ReadMembresia from './membresias/readMembresia'
+import EditMembresia from './membresias/editMembresia'
+import AsignarMembresia from './membresias/AsignarMembresias'
 
 import Transactions from "./Transactions";
 import Settings from "./Settings";
@@ -144,6 +151,13 @@ export default () => (
     <RouteWithSidebar exact path={Routes.SearchSede.path} component={SearchSede} />
     <RouteWithSidebar exact path={Routes.ReadSede.path} component={ReadSede} />
     <RouteWithSidebar exact path={Routes.EditSede.path} component={EditSede} />
+    <RouteWithSidebar exact path={Routes.SearchMemUsr.path} component={SearchMemUsr} />
+    <RouteWithSidebar exact path={Routes.ReadMemxUsr.path} component={ReadMemxUsr} />
+    <RouteWithSidebar exact path={Routes.SearchMembresia.path} component={SearchMembresia} />
+    <RouteWithSidebar exact path={Routes.CreateMembresia.path} component={CreateMembresia} />
+    <RouteWithSidebar exact path={Routes.ReadMembresia.path} component={ReadMembresia} />
+    <RouteWithSidebar exact path={Routes.EditMembresia.path} component={EditMembresia} />
+    <RouteWithSidebar exact path={Routes.AsignarMembresia.path} component={AsignarMembresia} />
 
     <RouteWithSidebar exact path={Routes.Transactions.path} component={Transactions} />
     <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} />

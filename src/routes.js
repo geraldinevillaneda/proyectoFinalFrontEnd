@@ -11,6 +11,14 @@ export const Routes = {
     SearchSede: {path: "/buscar/Sede"},
     ReadSede: {path: "/datos/Sede"},
     EditSede: {path: "/editar/Sede"},
+    SearchMemUsr: {path: "/buscar/membresia/usr"},
+    ReadMemxUsr: {path: "/datos/membresia/usr"},
+    SearchMembresia: {path: "/buscar/membresia"},
+    ReadMembresia: {path: "/datos/membresia"},
+    CreateMembresia: {path: "/crear/membresia"},
+    EditMembresia: {path: "/editar/membresia"},
+    AsignarMembresia: {path: "/asignar/membresia"},
+
 
     Transactions: { path: "/transactions" },
     Settings: { path: "/settings" },
