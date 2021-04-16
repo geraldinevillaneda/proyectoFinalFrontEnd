@@ -16,12 +16,11 @@ const initialFieldValues =
 export default function  ReadGroup () {
 
     const valores =  JSON.parse(sessionStorage.getItem('login'));
-    const id = valores.datos.id;
     const token = valores.datos.token;
 
     const datosGrupos = JSON.parse(sessionStorage.getItem('grupo'));
     
-    const [values, setValues] = useState(initialFieldValues);
+    const [values] = useState(initialFieldValues);
     console.log("datosGrupos")
     console.log(datosGrupos)
 

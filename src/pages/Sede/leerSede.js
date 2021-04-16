@@ -19,12 +19,12 @@ const initialFieldValues =
 export default function  LeerSede () {
 
     const valores =  JSON.parse(sessionStorage.getItem('login'));
-    const id = valores.datos.id;
+
     const token = valores.datos.token;
 
     const datosSedes = JSON.parse(sessionStorage.getItem('sede'));
     
-    const [values, setValues] = useState(initialFieldValues);
+    const [values] = useState(initialFieldValues);
     console.log("datosSedes")
     console.log(datosSedes)
 

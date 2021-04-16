@@ -84,7 +84,6 @@ export default function CreateGroup (){
 
         const valores = JSON.parse(sessionStorage.getItem('login'));
         const token = valores.datos.token;
-        const userID = valores.datos.id;
         
         const data = {
             id_grupo: datosGrupos.datos.id_grupo,
@@ -139,7 +138,6 @@ export default function CreateGroup (){
         e.preventDefault();
         
         const valores = JSON.parse(sessionStorage.getItem('login'));
-        const userID = valores.datos.id;
         const token = valores.datos.token;
 
         const data = {

@@ -29,7 +29,6 @@ export default function CreateSede (){
     const [LATITUD, setLATITUD] = useState('');
     const [LONGITUD, setLONGITUD] = useState('');
     const [ID_CIUDAD, setID_CIUDAD] = useState('');
-    const [ID_USUARIO, setID_USUARIO] = useState('');
     
     const   url = window.location.href;
     const navigator = useHistory();

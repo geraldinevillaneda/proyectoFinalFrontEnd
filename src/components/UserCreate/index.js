@@ -6,7 +6,6 @@ import '../../pages/Login/login'
 
 const initialFieldValues = 
 {
-    ID_USUARIO: '',
     PRIMER_NOMBRE: '',
     SEGUNDO_NOMBRE: '',
     PRIMER_APELLIDO: '',
@@ -28,7 +27,6 @@ export default function UserCreate (){
 
     const [values, setValues] = useState(initialFieldValues);
 
-    const [ID_USUARIO, SetID_USUARIO] = useState('');
     const [PRIMER_NOMBRE, SetPRIMER_NOMBRE] = useState('');
     const [SEGUNDO_NOMBRE, SetSEGUNDO_NOMBRE] = useState('');
     const [PRIMER_APELLIDO, SetPRIMER_APELLIDO] = useState('');

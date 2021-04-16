@@ -22,7 +22,7 @@ export default function  LeerUsuario () {
     const id = valores.datos.id;
     const token = valores.datos.token;
 
-    const [values, setValues] = useState(initialFieldValues);
+    const [values] = useState(initialFieldValues);
 
     const navegacion = useHistory();
 
