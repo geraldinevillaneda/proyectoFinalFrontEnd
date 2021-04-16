@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
 
 const initialFieldValues = 
 {
@@ -16,13 +15,9 @@ const initialFieldValues =
 
 export default function  LeerMembresiaxUsr () {
 
-    const valores =  JSON.parse(sessionStorage.getItem('login'));
-    const id = valores.datos.id;
-    const token = valores.datos.token;
-
     const datosMembresia = JSON.parse(sessionStorage.getItem('estado'));
 
-    const [values, setValues] = useState(initialFieldValues);
+    const [values] = useState(initialFieldValues);
     
     values.ESTADO = datosMembresia.datos.estado;
     values.ID_MEMBRESIA = datosMembresia.datos.id_membresia;
@@ -36,7 +31,6 @@ export default function  LeerMembresiaxUsr () {
     console.log("datosMembresia")
     console.log(datosMembresia)
 
-    const navegacion = useHistory();
 /*
     fetch('http://localhost:5000/membresias/usr/' + id,{
             method:'GET',

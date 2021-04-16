@@ -15,12 +15,11 @@ const initialFieldValues =
 export default function  LeerMembresia () {
 
     const valores =  JSON.parse(sessionStorage.getItem('login'));
-    const id = valores.datos.id;
     const token = valores.datos.token;
 
     const datosMembresia = JSON.parse(sessionStorage.getItem('membresia'));
     
-    const [values, setValues] = useState(initialFieldValues);
+    const [values] = useState(initialFieldValues);
     console.log("datosMembresia")
     console.log(datosMembresia)
 

@@ -21,6 +21,32 @@ const initialFieldValues =
 }
 
 
+const getRoles = () =>
+{
+    fetch('http://localhost:5000/roles/', {
+        method: 'GET',
+        headers:{
+            'Content-Type': 'application/json',
+            /* 'x-access-token': token */
+        }
+    }).then((respuesta) => {
+        respuesta.json().then((result) => {
+            if(result.Auth)
+            {
+                const roles = {datos: result.data}
+                console.log(roles)
+            }
+            else
+            {
+                const roles = {}
+            }
+
+        })
+    })
+}
+
+
+
 export default function UserCreate (){
 
  
@@ -43,6 +69,31 @@ export default function UserCreate (){
     const   url = window.location.href;
     const navigator = useHistory();
     let crear = false;
+
+
+    fetch('http://localhost:5000/roles/', {
+        method: 'GET',
+        headers:{
+            'Content-Type': 'application/json',
+            /* 'x-access-token': token */
+        }
+    }).then((respuesta) => {
+        respuesta.json().then((result) => {
+            if(result.Auth)
+            {
+                const roles = {datos: result.data}
+                console.log(roles)
+            }
+            else
+            {
+                const roles = {}
+            }
+
+        })
+    })
+
+    
+    /* const rolesCargados = data.map((roles, i)) */
 
 
     if(url.includes('crear/usuario'))

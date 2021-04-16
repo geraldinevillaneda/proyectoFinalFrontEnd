@@ -238,7 +238,7 @@ console.log("impresion del data",data);
                     </div>
 
                     <label className="form-label col-sm-4 labelForm">Nombre del Curso</label>
-                    <div className="col-md-8">
+                    <div className="col-md-8 listaOpciones">
                         {crear ?
                             <input onChange={(e) => setNOMBRE_CURSO(e.target.value)} value={NOMBRE_CURSO}  
                                 type="text" className="form-control" id="nombre_curso" placeholder="Nombre curso" required/>
@@ -251,7 +251,7 @@ console.log("impresion del data",data);
                     </div>
 
                     <label className="form-label col-sm-4 labelForm">Descripcion del Curso</label>
-                    <div className="col-md-8">
+                    <div className="col-md-8 listaOpciones">
                         {crear ?
                             <input onChange={(e) => setDESCRIPCION_CURSO(e.target.value)} value={DESCRIPCION_CURSO}  
                                 type="text" className="form-control" id="descripcion_curso" placeholder="Descripcion curso" required/>
@@ -264,7 +264,7 @@ console.log("impresion del data",data);
                     </div>
 
                     <label className="form-label col-sm-4 labelForm">Creditos del curso</label>
-                    <div className="col-md-8">
+                    <div className="col-md-8 listaOpciones">
                         { crear ?
                             <input onChange={(e) => setCREDITOS_CURSO(e.target.value)} value={CREDITOS_CURSO} 
                                 type="number" className="form-control" id="creditos_curso"  placeholder="Creditos curso" required/>
@@ -278,7 +278,7 @@ console.log("impresion del data",data);
 
 
                     <label className="form-label col-sm-4 labelForm">Categoria del Curso</label>
-                    <div className="col-md-8">
+                    <div className="col-md-8 listaOpciones">
                         { crear ?
                             <input onChange={(e) => setCATEGORIA_CURSO(e.target.value)} value={CATEGORIA_CURSO} 
                                 type="number" className="form-control" id="categoria_curso"  placeholder="Categoria curso" required/>

@@ -81,7 +81,7 @@ export default function  LeerUsuario () {
                 values.TIPO_DOCUMENTO = result.datos.tipo_documento;
                 values.NUMERO_DOCUMENTO = result.datos.numero_documento;
                 values.CORREO_ELECTRONICO = result.datos.correo_electronico;
-                values.CELUAR = result.datos.celular;
+                values.CELUAR = result.datos.celuar;
                 values.ROL = result.datos.rol;
             }
         })

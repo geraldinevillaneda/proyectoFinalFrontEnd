@@ -4,7 +4,7 @@ import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFeatherAlt, faUsers, faUserEdit, faMapMarkedAlt, faUniversity, faSignOutAlt, faTimes} from "@fortawesome/free-solid-svg-icons";
+import { faBook, faFeatherAlt, faUsers, faUserEdit, faMapMarkedAlt, faUniversity, faSignOutAlt, faTimes, faCreditCard} from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -106,15 +106,8 @@ export default (props = {}) => {
                 <NavItem title="Crear Sede" link={Routes.CreateSede.path} />
                 <NavItem title="Consultar Sede" link={Routes.SearchSede.path} />
               </CollapsableNavItem>
-              <CollapsableNavItem eventKey="tables/estacion" title="Membresia" icon={faCreditCard}>
-              <NavItem title="Buscar membresia" link={Routes.SearchMembresia.path} />
-              <NavItem title="Crear Membresia" link={Routes.CreateMembresia.path} />
-              <NavItem title="Informacion Membresia" link={Routes.SearchMemUsr.path} />
-              <NavItem title="Asignar membresia" link={Routes.AsignarMembresia.path} />
-                
-              </CollapsableNavItem>
 
-              <CollapsableNavItem eventKey="tables/estacion" title="Cursos" icon={faUniversity}>
+              <CollapsableNavItem eventKey="tables/estacion" title="Cursos" icon={faBook}>
                 <NavItem title="Crear Curso" link={Routes.CreateCourse.path} />
                 <NavItem title="Consultar Curso" link={Routes.SearchCourse.path} />
               </CollapsableNavItem>
@@ -127,6 +120,13 @@ export default (props = {}) => {
               <CollapsableNavItem eventKey="tables/rol" title="Roles" icon={faFeatherAlt}>
                 <NavItem title="Crear Rol" link={Routes.CreateRol.path} />
                 <NavItem title="Consultar Rol" link={Routes.SearchRol.path} />
+              </CollapsableNavItem>
+
+              <CollapsableNavItem eventKey="tables/estacion" title="Membresia" icon={faCreditCard}>
+                <NavItem title="Buscar membresia" link={Routes.SearchMembresia.path} />
+                <NavItem title="Crear Membresia" link={Routes.CreateMembresia.path} />
+                <NavItem title="Informacion Membresia" link={Routes.SearchMemUsr.path} />
+                <NavItem title="Asignar membresia" link={Routes.AsignarMembresia.path} />
               </CollapsableNavItem>
 
               <Dropdown.Divider className="my-3 border-indigo" />

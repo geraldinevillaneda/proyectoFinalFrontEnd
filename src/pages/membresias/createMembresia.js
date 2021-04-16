@@ -86,8 +86,7 @@ export default function CreateMembresia (){
 
         const valores = JSON.parse(sessionStorage.getItem('login'));
         const token = valores.datos.token;
-        const userID = valores.datos.id;
-        
+
         const data = {
             id_membresia: datosSedes.datos.id_membresia,
             estado: document.getElementById('estado').value,
@@ -141,7 +140,6 @@ export default function CreateMembresia (){
         e.preventDefault();
         
         const valores = JSON.parse(sessionStorage.getItem('login'));
-        const userID = valores.datos.id;
         const token = valores.datos.token;
 
         const data = {
@@ -217,7 +215,7 @@ export default function CreateMembresia (){
                     </div>
 
                     <label className="form-label col-sm-4 labelForm">Nombre de la membresia</label>
-                    <div className="col-md-8">
+                    <div className="col-md-8 listaOpciones">
                         {crear ?
                             <input onChange={(e) => setNOMBRE_SEDE(e.target.value)} value={NOMBRE_MEMBRESIA}  
                                 type="text" className="form-control" id="nombre_membresia" placeholder="Nombre sede" required/>
@@ -230,7 +228,7 @@ export default function CreateMembresia (){
                     </div>
 
                     <label className="form-label col-sm-4 labelForm">Duracion de la membresia</label>
-                    <div className="col-md-8">
+                    <div className="col-md-8 listaOpciones">
                         {crear ?
                             <input onChange={(e) => setLATITUD(e.target.value)} value={DURACION}  
                                 type="number" className="form-control" id="duracion" placeholder="Duracion de la membresia" required/>
@@ -243,7 +241,7 @@ export default function CreateMembresia (){
                     </div>
                     
                     <label className="form-label col-sm-4 labelForm">Precio de la membresia</label>
-                    <div className="col-md-8">
+                    <div className="col-md-8 listaOpciones">
                         {crear ?
                             <input onChange={(e) => setLONGITUD(e.target.value)} value={PRECIO}  
                                 type="number" className="form-control" id="precio" placeholder="Precio de la membresia" required/>

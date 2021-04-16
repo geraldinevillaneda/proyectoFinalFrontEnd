@@ -214,7 +214,7 @@ export default function CreateGroup (){
                     </div>
 
                     <label className="form-label col-sm-4 labelForm">Cupo del grupo</label>
-                    <div className="col-md-8">
+                    <div className="col-md-8 listaOpciones">
                         {crear ?
                             <input onChange={(e) => setCUPO_ESTUDIANTES(e.target.value)} value={CUPO_ESTUDIANTES}  
                                 type="number" className="form-control" id="cupo_estudiantes" placeholder="Cupo estudiantes" required/>

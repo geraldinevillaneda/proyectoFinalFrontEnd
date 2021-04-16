@@ -1,20 +1,13 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {Helmet} from 'react-helmet';
-import { isElementOfType } from 'react-dom/test-utils';
-//import LeerGasolinera from './leerSede'
 
-var data = [];
-//var navigator = useHistory();
 
 export default function AsignarMembresia() {
     
     const [id, setId_usuario] = useState("");
     const [mem, setMem_membresia] = useState("");
-    const navigate = useHistory();
     const valores = JSON.parse(sessionStorage.getItem('login'));
-    const token = valores.datos.token;
-    //const userId = valores.datos.id;
     const f = new Date();
     console.log(valores);
     var navigator = useHistory();
