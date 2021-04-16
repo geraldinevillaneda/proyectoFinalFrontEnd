@@ -116,6 +116,17 @@ export default (props = {}) => {
                 
               </CollapsableNavItem>
 
+              <CollapsableNavItem eventKey="tables/estacion" title="Cursos" icon={faUniversity}>
+                <NavItem title="Crear Curso" link={Routes.CreateCourse.path} />
+                <NavItem title="Consultar Curso" link={Routes.SearchCourse.path} />
+              </CollapsableNavItem>
+
+              <CollapsableNavItem eventKey="tables/estacion" title="Grupos" icon={faUniversity}>
+                <NavItem title="Crear Grupo" link={Routes.CreateGroup.path} />
+                <NavItem title="Consultar Grupo" link={Routes.SearchGroup.path} />
+              </CollapsableNavItem>
+
+
               {/* <CollapsableNavItem eventKey="examples/" title="Page Examples" icon={faFileAlt}>
                 <NavItem title="Sign In" link={Routes.Signin.path} />
                 <NavItem title="Sign Up" link={Routes.Signup.path} />

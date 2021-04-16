@@ -104,10 +104,10 @@ export default function CreateSede (){
             t001_usuarios_id_usuario: userID,
         };
         console.log('data');
-        console.log(data);
         
-
-        fetch(('http://localhost:5000/sedes/update/' + data.ID_SEDE) ,{
+        
+        
+        fetch(('http://localhost:5000/sedes/update/' + data.id_sede) ,{
             method:'POST',
             body: JSON.stringify(data),
             headers: {
@@ -213,18 +213,16 @@ export default function CreateSede (){
                         {crear ?
                             <select onChange={(e) => setESTADO(e.target.value)} value={ESTADO} 
                                     className="form-select" id="estado" >
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <option value="0">Inactivo</option>
+                                <option value="1">Activo</option>
                             </select>
                             :<select onChange={(e) => setValues(
                                 {
                                     ESTADO: e.target.value,
                                 }
                             )} value={values.ESTADO} className="form-select" id="estado" >
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                <option value="0">Inactivo</option>
+                                <option value="1">Activo</option>
                             </select>
                         }
                     </div>

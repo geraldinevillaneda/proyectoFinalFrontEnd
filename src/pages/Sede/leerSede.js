@@ -71,14 +71,14 @@ export default function  LeerSede () {
     return(
         <div className="wrapper fadeInDown">
             <div id="formContent" className="editarUsuario">
-            <h2>Datos Estación</h2>
+            <h2>Datos Sede</h2>
                 <form className="row g-3">
 
                     <label className="form-label col-sm-6 labelForm">Estado de la sede:</label>
                     <label type="number" className="col-md-6">{values.ESTADO}</label>
 
                     <label className="form-label col-sm-6 labelForm">Nombre de la Sede:</label>
-                    <label type="number" className="col-md-6">{values.NOMBRE_SEDE}</label>
+                    <label type="text" className="col-md-6">{values.NOMBRE_SEDE}</label>
 
                     <label className="form-label col-sm-6 labelForm">Latitud:</label>
                     <label type="number" className="col-md-6">{values.LATITUD}</label>
